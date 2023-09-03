@@ -15,5 +15,8 @@ class MainActivity : AppCompatActivity() {
         val myRef = database.getReference("message")
 
         myRef.setValue("Hello, World!")
+
+
+
     }
 }
