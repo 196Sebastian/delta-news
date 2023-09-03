@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "581961775471",
+    "firebase_url": "https://delta-news-b36bd-default-rtdb.firebaseio.com",
+    "project_id": "delta-news-b36bd",
+    "storage_bucket": "delta-news-b36bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581961775471:android:b88759fa0e5b3be89e109a",
+        "android_client_info": {
+          "package_name": "com.example.deltanews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581961775471-micasku0bgbvhbb7q5uu2cjg7cpjd6bc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVBGpoqXzewHs0nKPFgD48hLLQFhb34bs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581961775471-micasku0bgbvhbb7q5uu2cjg7cpjd6bc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
