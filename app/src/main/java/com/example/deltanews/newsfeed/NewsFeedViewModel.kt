@@ -1,8 +1,9 @@
-package com.example.deltanews
+package com.example.deltanews.newsfeed
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.deltanews.model.NewFeedItem
 
 class NewsFeedViewModel : ViewModel() {
 

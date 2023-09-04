@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.deltanews.NewsFeedViewModel" />
+            type="com.example.deltanews.newsfeed.NewsFeedViewModel" />
 
     </data>
 
@@ -19,13 +19,15 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".NewsFeedActivity">
+        tools:context=".newsfeed.NewsFeedActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:paddingBottom="24dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

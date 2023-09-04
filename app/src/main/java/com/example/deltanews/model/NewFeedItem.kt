@@ -1,4 +1,4 @@
-package com.example.deltanews
+package com.example.deltanews.model
 
 data class NewFeedItem(
     val description: String = "",
