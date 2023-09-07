@@ -3,7 +3,6 @@ package com.example.deltanews.newsfeed
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deltanews.R
 import com.example.deltanews.databinding.ViewHolderNewsFeedItemBinding
@@ -41,6 +40,9 @@ class NewsFeedRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
         fun onBind(newFeedItem: NewFeedItem) {
             binding.title = newFeedItem.title
             binding.description = newFeedItem.description
+            binding.source = newFeedItem.source
+            binding.published = newFeedItem.published
+            binding.imageUrl = newFeedItem.image_url
         }
     }
 }
