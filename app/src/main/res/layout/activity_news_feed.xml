@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="textOnScreen"
-            type="String" />
-
-        <variable
             name="viewModel"
             type="com.example.deltanews.newsfeed.NewsFeedViewModel" />
 
@@ -27,6 +23,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingBottom="24dp"
+            app:setItems="@{viewModel.newsFeedLiveData}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
