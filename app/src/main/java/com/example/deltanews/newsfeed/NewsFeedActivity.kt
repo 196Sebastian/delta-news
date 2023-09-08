@@ -11,12 +11,15 @@ import com.example.deltanews.details.DetailActivity
 import java.lang.ref.WeakReference
 
 class NewsFeedActivity : AppCompatActivity(), NewsFeedRecyclerViewAdapter.NewsFeedInterface {
+
+    val viewModel: NewsFeedViewModel by lazy {
+        ViewModelProvider(this)[NewsFeedViewModel::class.java]
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityNewsFeedBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_news_feed)
-
-        val viewModel: NewsFeedViewModel = ViewModelProvider(this)[NewsFeedViewModel::class.java]
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -33,5 +36,9 @@ class NewsFeedActivity : AppCompatActivity(), NewsFeedRecyclerViewAdapter.NewsFe
         }
 
         startActivity(intent)
+    }
+
+    override fun onFavoriteClicked(id: String, onClick: Boolean) {
+        viewModel.repository.updateFavoriteStatus(id, onClick)
     }
 }

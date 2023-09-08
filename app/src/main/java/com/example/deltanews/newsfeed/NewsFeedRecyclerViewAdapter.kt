@@ -15,6 +15,7 @@ class NewsFeedRecyclerViewAdapter(
 
     interface NewsFeedInterface {
         fun onClick(url: String)
+        fun onFavoriteClicked(id: String, onClick: Boolean)
     }
 
     private val newsFeedItem = mutableListOf<NewFeedItem>()
@@ -28,9 +29,16 @@ class NewsFeedRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as NewsFeedItemViewHolder).onBind(newsFeedItem[position]) { url ->
-            callbackReference.get()?.onClick(url)
-        }
+        (holder as NewsFeedItemViewHolder).onBind(
+            newFeedItem = newsFeedItem[position],
+            onCLick = { url ->
+                callbackReference.get()?.onClick(url)
+            },
+            onFavoriteClicked = { newStatus ->
+                callbackReference.get()?.onFavoriteClicked(newsFeedItem[position].id, newStatus)
+            }
+
+        )
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -46,7 +54,11 @@ class NewsFeedRecyclerViewAdapter(
     ) {
         private val binding = ViewHolderNewsFeedItemBinding.bind(itemView)
 
-        fun onBind(newFeedItem: NewFeedItem, onCLick: (String) -> Unit) {
+        fun onBind(
+            newFeedItem: NewFeedItem,
+            onFavoriteClicked: (Boolean) -> Unit,
+            onCLick: (String) -> Unit
+        ) {
             binding.title = newFeedItem.title
             binding.description = newFeedItem.description
             binding.source = newFeedItem.source
@@ -54,6 +66,18 @@ class NewsFeedRecyclerViewAdapter(
             binding.imageUrl = newFeedItem.image_url
 
             binding.root.setOnClickListener { onCLick(newFeedItem.url) }
+
+            val drawableInt = if (newFeedItem.favorite) {
+                R.drawable.ic_favorite
+            } else {
+                R.drawable.ic_favorite_border
+            }
+
+            binding.favoriteImageView.setImageResource(drawableInt)
+            binding.favoriteImageView.setOnClickListener {
+                val newStatus = !newFeedItem.favorite
+                onFavoriteClicked(newStatus)
+            }
         }
     }
 }
