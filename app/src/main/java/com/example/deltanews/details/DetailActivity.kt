@@ -1,6 +1,8 @@
 package com.example.deltanews.details
 
 import android.os.Bundle
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.deltanews.R
@@ -18,7 +20,14 @@ class DetailActivity : AppCompatActivity() {
         val binding: ActivityDetailBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_detail)
 
-        val url = intent.getStringExtra(ARG_URL) ?: ""
-        binding.url = url
+
+        val client = object : WebViewClient() {
+            override fun onPageFinished(view: WebView?, url: String?) {
+                binding.loadingProgressBar.hide()
+            }
+        }
+
+        binding.webView.webViewClient = client
+        binding.url = intent.getStringExtra(ARG_URL) ?: ""
     }
 }
